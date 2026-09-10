@@ -42,9 +42,7 @@ def fetch_poster(movie_id):
         print("TMDB Error:", e)
 
     return None
-# -----------------------------
-# Recommendation function
-# -----------------------------
+
 def recommend(movie):
 
     index = movies[movies['title'] == movie].index[0]
@@ -73,10 +71,6 @@ def recommend(movie):
     return recommended_movie_names, recommended_movie_posters
 
 
-# -----------------------------
-# Load data
-# -----------------------------
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 movies_path = os.path.join(BASE_DIR, "movies_dict.pkl")
@@ -96,10 +90,6 @@ with open(similarity_path, "rb") as file:
     similarity = pickle.load(file)
 
 
-# -----------------------------
-# Streamlit UI
-# -----------------------------
-
 st.header("Movie Recommender System")
 
 
@@ -109,7 +99,6 @@ selected_movie = st.selectbox(
     "Type or select a movie from the dropdown",
     movie_list
 )
-
 
 if st.button("Show Recommendation"):
 
